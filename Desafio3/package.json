@@ -1,0 +1,23 @@
+{
+  "name": "desafio3",
+  "version": "1.0.0",
+  "description": "Servidor express",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JPjok3r/coderhouse-comision-43400-desafios.git"
+  },
+  "author": "Juan Pablo Saavedra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JPjok3r/coderhouse-comision-43400-desafios/issues"
+  },
+  "homepage": "https://github.com/JPjok3r/coderhouse-comision-43400-desafios#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
