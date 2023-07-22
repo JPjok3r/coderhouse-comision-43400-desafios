@@ -8,10 +8,10 @@ app.use(express.urlencoded({extended:true}));
 
 //routes
 app.get('/', (req, res) => {
-    res.redirect('/api/products');
+    res.redirect('/products');
 });
 
-app.get('/api/products', async (req, res) => {
+app.get('/products', async (req, res) => {
     const { limit } = req.query;
     try {
         const products = await productManager.getProducts();
@@ -26,7 +26,7 @@ app.get('/api/products', async (req, res) => {
     }
 });
 
-app.get('/api/products/:productId', async (req, res) => {
+app.get('/products/:productId', async (req, res) => {
     const { productId } = req.params;
     try {
         const product = await productManager.getProductById(+productId);
@@ -39,7 +39,7 @@ app.get('/api/products/:productId', async (req, res) => {
     }
 });
 
-app.listen(3000, () => {
-    console.log('Servidor iniciado, escuchando en 3000');
+app.listen(8080, () => {
+    console.log('Servidor iniciado, escuchando en 8080');
 })
 
