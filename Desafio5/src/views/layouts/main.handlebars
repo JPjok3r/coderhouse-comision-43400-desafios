@@ -1,0 +1,68 @@
+<!DOCTYPE html5>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/style.css">
+    <title>{{titlePage}}</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="#!"><img src="" alt="logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#!" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="categorias">
+                            <li><a class="dropdown-item" href="#!" id="li-todos">Todos los productos</a></li>
+                            <li><hr class="dropdown-divider" />Categorias</li>
+                        </ul>
+                    </li>
+                </ul>
+                <a class="btn btn-outline-dark" href="/cart/64e7e2b32612f4a2aad3fc29">
+                    <button class="btn btn-outline-dark" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <i class="bi-cart-fill me-1"></i>
+                        Cart
+                        <span class="badge bg-dark text-white ms-1 rounded-pill" id="cartCantElements">0</span>
+                    </button>
+                </a>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 border border-dark rounded-circle">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#!" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person"></i></a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="userData">
+                            <li>Bienvenid@!!</li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li>{{user.name}}</li> 
+                            {{#if user.age}}
+                            <li>Edad: {{user.age}}</li>
+                            {{/if}}
+                            <li>{{user.rol}}</li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li><a class="dropdown-item" href="/api/users/logout">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div> 
+        </div>
+    </nav>
+    <header class="bg-dark py-5 bannerPresentacion">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">STORELECTRONICS</h1>
+                <p class="lead fw-normal text-white-50 mb-0">Compra tus artículos favoritos a los mejores precios</p>
+            </div>
+        </div>
+    </header>
+
+    {{{body}}}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+</body>
+</html>
