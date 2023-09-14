@@ -12,7 +12,7 @@ router.post('/login', async (req, res) => {
     }
     if(email === "adminCoder@coder.com" && password === "adminCod3r123"){
         req.session.user = {
-            name: "Coder",
+            name: "CoderHouse",
             email: email,
             rol: "admin"
         }
