@@ -1,0 +1,91 @@
+[
+    {
+      "title": "Samsung Galaxy Note 20",
+      "description": "Telefono smartphone Samsung de alta gama",
+      "code": "asd132",
+      "price": 120,
+      "status": true,
+      "stock": 50,
+      "category": "Celulares",
+      "thumbnails": [],
+      "id": 1
+    },
+    {
+      "title": "Iphone 14",
+      "description": "Telefono smartphone Apple",
+      "code": "ert546",
+      "price": 130,
+      "status": true,
+      "stock": 60,
+      "category": "Celulares",
+      "thumbnails": [],
+      "id": 2
+    },
+    {
+      "title": "ASUS ROG Zephirus Duo",
+      "description": "Laptop gaming de gama alta con doble pantalla",
+      "code": "gfd786",
+      "price": 100,
+      "status": true,
+      "stock": 30,
+      "category": "Laptops",
+      "thumbnails": [],
+      "id": 3
+    },
+    {
+      "title": "MSI Rider GE 76",
+      "description": "Laptop gaming de gama alta marca MSI",
+      "code": "csr964",
+      "price": 1500,
+      "status": true,
+      "stock": 20,
+      "category": "Laptops",
+      "thumbnails": [],
+      "id": 4
+    },
+    {
+      "title": "TV Xiaomi P1",
+      "description": "Televisor de 65 pulgadas marca Xiaomi",
+      "code": "prl702",
+      "price": 900,
+      "status": false,
+      "stock": 10,
+      "category": "TV",
+      "thumbnails": [],
+      "id": 5
+    },
+    {
+      "title": "PS4 Pro",
+      "description": "Consola de videojuegos mejorada con alta resolucion",
+      "code": "fvt475",
+      "price": 450,
+      "status": false,
+      "stock": 1,
+      "category": "Consolas",
+      "thumbnails": [],
+      "id": 6
+    },
+    {
+      "title": "PS5",
+      "description": "Consola de videojuegos de ultima generacion",
+      "code": "wer025",
+      "price": 1050,
+      "status": true,
+      "stock": 50,
+      "category": "Consolas",
+      "thumbnails": [],
+      "id": 7
+    },
+    {
+      "title": "Lian Li Mid Tower",
+      "description": "Case PC gamer tamaño mediano para miniATX, microATX y ATX",
+      "code": "bhy902",
+      "price": 500,
+      "status": true,
+      "stock": 40,
+      "category": "PC case",
+      "thumbnails": [],
+      "id": 8
+    }
+  ]
+  

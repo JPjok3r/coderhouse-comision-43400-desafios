@@ -1,0 +1,27 @@
+<section className="py-5">
+    <div className="container px-4 px-lg-5 my-5">
+        <div className="row gx-4 gx-lg-5 align-items-center">
+            <div className="col-md-6">
+                <img className="card-img-top mb-5 mb-md-0" src={{prod.thumbnails}} alt={{prod.title}} />
+            </div>
+            <div className="col-md-6">
+                <h1 className="display-5 fw-bolder">{{prod.title}}</h1>
+                <div className="fs-5 mb-5">
+                    <span>{{prod.price}}</span>
+                </div>
+                <p className="lead">{{prod.description}}</p>
+                <div className="d-flex">
+                    <form method="post" action="/agregar/64e7e2b32612f4a2aad3fc29/{{prod._id}}">
+                        <input className="form-control text-center me-3" id="inputQuantity" type="number" value="1" />
+                        {{!-- <button type="button" className="btn btn-primary btn-sm">-</button>
+                        <button type="button" className="btn btn-primary btn-sm">+</button> --}}
+                        <button className="btn btn-outline-dark flex-shrink-0" type="submit">
+                            <i className="bi-cart-fill me-1"></i>
+                            Agregar al carrito
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

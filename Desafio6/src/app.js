@@ -11,7 +11,8 @@ import { __dirname } from "./utils.js";
 import { chatMongo } from "./dao/mongoManagers/ChatMongo.js";
 import session from 'express-session';
 import mongoStore from 'connect-mongo';
-
+import passport from 'passport';
+import './passport/passportStrategies.js'
 
 const app = express();
 
@@ -37,7 +38,11 @@ app.use(session({
   //cookie: {maxAge: 60000},
   resave: false,
   saveUninitialized: false
-}))
+}));
+
+//Passport
+app.use(passport.initialize());
+//app.use(passport.session());
 
 //Routes
 app.use("/api/products", productRouter);

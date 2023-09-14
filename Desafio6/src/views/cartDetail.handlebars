@@ -1,0 +1,29 @@
+<table className="table table-hover">
+    <thead>
+        <tr className="table-dark">
+            <th scope="col">#</th>
+            <th scope="col">Item</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Precio Unitario</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each doc.products}}
+            <tr className="table-active">
+                <th scope="row">{{@index}}</th>
+                <td>
+                    <img class="cartTableImg card-img" src={{id.thumbnails}} alt={{id.title}} />
+                    <h5 className="">{{id.title}}</h5>
+                </td>
+                <td>
+                    <p className="card-text">{{quantity}}</p>
+                </td>
+                <td>
+                    <p className="card-text">
+                        {{id.price}}
+                    </p>
+                </td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>
