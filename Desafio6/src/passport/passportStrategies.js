@@ -1,5 +1,5 @@
 import passport from 'passport';
-import { userModel } from '../../../Desafio5/src/dao/db/models/user.model.js';
+import { userModel } from '../dao/db/models/user.model.js';
 import { Strategy as LocalStrategy } from 'passport-local';
 import { Strategy as GithubStrategy } from 'passport-github2';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
