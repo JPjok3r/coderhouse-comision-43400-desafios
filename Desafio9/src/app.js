@@ -8,7 +8,7 @@ import cartsRouter from "./routes/carts.router.js";
 import usersRouter from "./routes/users.router.js";
 import sessionRouter from "./routes/sessions.router.js";
 import viewsRouter from "./routes/views.router.js";
-import { errorMiddleware } from './services/errors/error.middleware.js';
+import { errorMiddleware } from './errors/error.middleware.js';
 import handlebars from 'express-handlebars';
 import { Server } from "socket.io";
 import { __dirname } from "./utils.js";

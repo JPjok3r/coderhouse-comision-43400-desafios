@@ -1,6 +1,7 @@
 import { productService } from "../services/products.service.js";
-import CustomError from "../services/errors/CustomError.js";
-import { generateProductErrorInfo } from "../services/errors/infoError.js";
+import CustomError from "../errors/CustomError.js";
+import { generateProductErrorInfo } from "../errors/infoError.js";
+import errorsEn from "../errors/enums.js";
 
 class ProductController{
     async getProducts(req, res) {
@@ -25,9 +26,9 @@ class ProductController{
         }
     }
     
-    async createProduct(req, res) {
+    async createProduct(req, res, next) {
         const { title, description, code, price, status=true, stock, category, thumbnails=[] } = req.body;
-        //try {
+        try {
             if(title && description && code && price && stock && category){
                 const sendData = {
                     title,
@@ -43,14 +44,15 @@ class ProductController{
                 res.status(200).json({message: "Producto creado exitosamente", product: newProduct});
             } else{
                 CustomError.createError({
-                    name: "PrductError",
+                    name: "ProductError",
                     cause: generateProductErrorInfo({title, description, code, price, stock, category}),
-                    message: "No se pudo crear el producto"
+                    message: "No se pudo crear el producto",
+                    code: errorsEn.INVALID_PARAMETERS
                 });
             }
-        //} catch (error) {
-            //res.status(500).json({error});
-        //}
+        } catch (error) {
+            next(error);
+        }
     }
     
     async updateProduct(req, res) {
