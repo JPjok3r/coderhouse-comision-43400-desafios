@@ -1,0 +1,141 @@
+paths:
+  /api/carts:
+    post:
+      summary: Crear un carrito para asociarlo a un usuario
+      tags:
+        - Carritos
+      responses:
+        "200":
+          description: Carrito creado correctamente
+        "500":
+          description: Error interno del servidor
+  /api/carts/{cid}:
+    get:
+      summary: Obtener el contenido de un carrito por su id
+      tags:
+        - Carritos
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Contenido del carrito obtenido correctamente
+        "400":
+          description: El carrito no existe, el id es incorrecto
+        "500":
+          description: Error interno del servidor
+    delete:
+      summary: Eliminar un carrito por completo
+      tags:
+        - Carritos
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Carrito eliminado correctamente
+        "400":
+          description: Carrito no encontrado, el id es incorrecto
+        "500":
+          description: Error interno del servidor
+  /api/carts/{cid}/products/{pid}:
+    put:
+      summary: Agregar un producto al carrito o actualizar una cantidad de producto en carrito
+      tags:
+        - Carritos
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: pid
+          in: path
+          required: true
+          schema:
+            $type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#components/requestBodies/updateCart"
+      responses:
+        "200":
+          description: Producto agregado o actualizado correctamente
+        "400":
+          description: No se pudo agregar o actualizar el producto, carrito o producto incorrectos
+        "401":
+          description: No autorizado para agregar productos
+        "500":
+          description: Error interno del servidor
+    delete:
+      summary: Quitar un producto del carrito
+      tags:
+        - Carritos
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: pid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Producto eliminado de carrito correctamente
+        "500":
+          description: Error interno del servidor
+  /api/carts/{cid}/purchase:
+    get:
+      summary: Comprar todos los productos en el carrito
+      tags:
+        - Carritos
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          schema:
+            type: string
+components:
+  schemas:
+    Cart:
+      type: object
+      properties:
+        _id: 
+          type: ObjectId
+          description: Id autogenerado por MongoDB
+        products:
+          type: array
+          items:
+            type: object
+            properties:
+              id: 
+                type: ObjectId
+                description: Id del producto referenciado
+              quantity:
+                type: number
+                description: Cantidad de unidades en el carrito
+        example:
+          _id: ObjectId("6513330df3341a90d38217d1")
+          products: 
+            - id: ObjectId("64e7a5759dd893fecb4b3f69")
+              quantity: 2
+            - id: ObjectId("64e7a6149dd893fecb4b3f6d")
+              quantity: 1
+  requestBodies:
+    updateCart:
+      type: object
+      properties:
+        quantity: number
+        description: Cantidad de unidades en el carrito
+      example:
+        quantity: 2

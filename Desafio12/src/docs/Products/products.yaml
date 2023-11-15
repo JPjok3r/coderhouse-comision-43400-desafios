@@ -1,0 +1,242 @@
+paths:
+  /api/products:
+    get:
+      summary: Obtiene todos los productos
+      tags:
+        - Productos
+      parameters:
+        - $ref: "#components/parameters/limitParam"
+        - $ref: "#components/parameters/sortParam"
+        - $ref: "#components/parameters/pageParam"
+        - $ref: "#components/parameters/queryParam"
+      responses:
+        "200":
+          description: Todos los productos fueron obtenidos correctamente
+        "500":
+          description: Error interno del servidor, puede ser causado por un fallo de conexión con DB
+    post:
+      summary: Crea nuevo producto
+      tags:
+        - Productos
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#components/requestBodies/createUser"
+      responses:
+        "200": 
+          description: Producto creado con éxito
+        "400":
+          description: Error, datos incompletos
+  /api/products/{pId}:
+    get:
+      summary: Obtiene un solo producto
+      tags:
+        - Productos
+      parameters:
+        - name: pId
+          in: path
+          description: Id del producto a recuperar de DB
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: El producto fue obtenido correctamente
+        "400":
+          description: Id incorrecto, producto inexistente en DB
+        "500":
+          description: Error interno
+    put:
+      summary: Actualiza un producto
+      tags:
+        - Productos
+      parameters:
+        - name: pId
+          in: path
+          description: Id del producto a actualizar en DB
+          required: true
+          schema:
+            $type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#components/requestBodies/updateProduct"
+      responses:
+        "200":
+          description: Producto actializado correctamente
+        "500":
+          description: Error interno
+    delete:
+      summary: Elimina un producto
+      tags:
+        - Productos
+      parameters:
+        - name: pId
+          in: path
+          description: Id del producto a eliminar de DB
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: El producto fue eliminado correctamente
+        "500":
+          description: Error interno
+components:
+  parameters:
+    limitParam:
+      name: limit
+      in: query
+      description: Limite de elementos a mostrar
+      example: 10
+      schema:
+        type: integer
+    sortParam:
+      name: sort
+      in: query
+      description: Ordena los resultados por precio
+      example: asc
+      schema:
+        type: string
+        enum: [asc, desc]
+    pageParam:
+      name: page
+      in: query
+      description: Pagina que se quiere obtener
+      example: 2
+      schema:
+        type: integer
+    queryParam:
+      name: query
+      in: query
+      description: Busqueda en base a una busqueda que se desea realizar
+      example: "category=Consolas"
+      schema:
+        type: string
+  schemas:
+    Product:
+      type: object
+      required:
+        - title
+        - description
+        - price
+        - code
+        - stock
+        - category
+      properties:
+        _id:
+          type: ObjectId
+          description: Id autogenerado de MongoDB
+        title:
+          type: string
+          description: Título del producto
+        description:
+          type: string
+          description: Descripción breve sobre el producto vendido
+        price:
+          type: number
+          description: Precio del producto en USD
+        code:
+          type: string
+          description: Código unico e identificador del producto
+        stock:
+          type: number
+          description: Stock actual del producto indica cantidad disponible
+        category:
+          type: string
+          description: Categoría a la que pertenece el producto
+        status:
+          type: boolean
+          description: Indica si el producto está disponible o no
+        thumbnails:
+          type: array
+          items:
+            type: string
+            description: Imagenes del producto para mostrarlo individual, en listas o carrusel
+        owner:
+          type: string
+          description: Usuario dueño del producto publicado
+      example:
+        _id: ObjectId("64e7a4229dd893fecb4b3f65")
+        title: "Samsung Galaxy Note 20"
+        description: "Telefono smartphone Samsung de alta gama"
+        price: 800
+        code: "dsa735"
+        stock: 30
+        category: "Celulares"
+        status: true
+        thumbnails: ["https://i.pinimg.com/originals/1c/21/cd/1c21"]
+  requestBodies:
+    createUser:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Título del producto
+        description:
+          type: string
+          description: Descripción del producto vendido
+        price:
+          type: number
+          description: Precio del producto en USD
+        code:
+          type: string
+          description: Código unico del producto
+        stock:
+          type: number
+          description: Stock actual del producto indica cantidad disponible
+        category:
+          type: string
+          description: Categoría a la que pertenece el producto
+        status:
+          type: boolean
+          description: Indica si el producto está disponible o no
+        thumbnails:
+          type: array
+          items:
+            type: string
+            description: Imagenes del producto para mostrarlo individual, en listas o carrusel
+      example:
+        title: Monitor MSI Optix MAG271CV
+        description: Monitor gaming curvo de 27" FHD 192x1080 a 144Hz
+        price: 1200
+        code: ome603
+        stock: 20
+        category: Electronicos
+        thumbnails: ["https://asset.msi.com/resize/image/global/product/product_8_20180607094100_5b188d2c3fa82.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png"]
+    updateProduct:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Título del producto
+        description:
+          type: string
+          description: Descripción del producto vendido
+        price:
+          type: number
+          description: Precio del producto en USD
+        code:
+          type: string
+          description: Código unico del producto
+        stock:
+          type: number
+          description: Stock actual del producto indica cantidad disponible
+        category:
+          type: string
+          description: Categoría a la que pertenece el producto
+        status:
+          type: boolean
+          description: Indica si el producto está disponible o no
+        thumbnails:
+          type: array
+          items:
+            type: string
+            description: Imagenes del producto para mostrarlo individual, en listas o carrusel
+      example:
+        price: 1300
+        stock: 15
